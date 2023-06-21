@@ -1,0 +1,32 @@
+[
+    {
+        "fullName": "Omair Mairaj",
+        "email": "omairmairaj@gmail.com",
+        "password": "123456",
+        "role": "sale"
+    },
+    {
+        "fullName": "Wajih Khan",
+        "email": "wajihkhan@gmail.com",
+        "password": "123456",
+        "role": "admin"
+    },
+    {
+        "fullName": "Saud",
+        "email": "saud@gmail.com",
+        "password": "123456",
+        "role": "sale"
+    },
+    {
+        "fullName": "Goodluck remmy",
+        "email": "goodluck.remmy@yahoo.com",
+        "password": "123456",
+        "role": "client"
+    },
+    {
+        "fullName": "Abeer",
+        "email": "abeer@gmail.com",
+        "password": "123456",
+        "role": "sale"
+    }
+]

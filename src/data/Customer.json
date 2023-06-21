@@ -1,0 +1,50 @@
+[
+    {
+        "customer_id": "C-010001",
+        "fullName": "Goodluck remmy",
+        "companyName": "Goodluck Remmy",
+        "email": "goodluck.remmy@yahoo.com",
+        "altEmail": "",
+        "contactNo": "+255717957390",
+        "altContactNo": "",
+        "country": "Tanzania",
+        "city": "Moroboro",
+        "address": "Morogoro Tanzania",
+        "salePerson": "Wajih Khan",
+        "registerAs": "Dealer",
+        "prefCurrency": "USD",
+        "status": "Retainer"
+    },
+    {
+        "customer_id": "C-010005",
+        "fullName": "Freling tovosia",
+        "companyName": "FS International",
+        "email": "frelingtovosia@gmail.com",
+        "altEmail": "",
+        "contactNo": "+6777204687",
+        "altContactNo": "",
+        "country": "Solomon Islands",
+        "city": "Honiara",
+        "address": "Panatina Ridge , Honiara, Solomon Islands.",
+        "salePerson": "Saud",
+        "registerAs": "Dealer",
+        "prefCurrency": "USD",
+        "status": "Active"
+    },
+    {
+        "customer_id": "C-010010",
+        "fullName": "Letare Samwel Lema",
+        "companyName": "Hai Motors",
+        "email": "letaresamwel83@gmail.com",
+        "altEmail": "",
+        "contactNo": "+255713272733",
+        "altContactNo": "",
+        "country": "Tanzania",
+        "city": "Dar es Salaam",
+        "address": "p.o box 65102 dar es salaam, Tanzania",
+        "salePerson": "Abeer",
+        "registerAs": "Dealer",
+        "prefCurrency": "USD",
+        "status": "Inactive"
+    }
+]

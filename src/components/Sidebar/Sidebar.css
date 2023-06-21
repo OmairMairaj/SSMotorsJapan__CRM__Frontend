@@ -1,0 +1,103 @@
+.sidebar {
+    position: fixed;
+    width: 3%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    border-radius: 0px 5px;
+    -webkit-box-shadow: 1px 0px 8px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 0px 8px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 0px 8px -3px rgba(0, 0, 0, 0.75);
+    z-index: 2;
+    overflow: hidden;
+}
+
+.sidebar__section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #153e4d;
+}
+
+.sidebar__icon {
+    position: absolute;
+    top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sidebar__icon:hover {
+    background-color: rgba(24, 72, 89, 0.784)
+}
+
+.sidebar__logo{
+    margin: 10px 0;
+    width: 80%;
+}
+
+.sidebar__logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar__menu {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e8f3ff;
+    padding: 20px;
+    padding-top: 50px;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 5%);
+}
+
+.sidebar__menu__pages{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.sidebar__menu__pages__item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    color: rgba(24, 72, 89, 0.784);
+    cursor: pointer;
+}
+.sidebar__menu__pages__item:hover{
+    background-color: #fafafa;
+    color: rgb(79, 79, 79);
+}
+.sidebar__menu__pages__item__icon{
+    margin-right: 10px;
+    width: 20%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.sidebar__menu__pages__item__name{
+    font-weight: bold;
+    font-size: 0.7rem;
+}

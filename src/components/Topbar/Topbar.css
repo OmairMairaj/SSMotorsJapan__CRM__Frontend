@@ -1,0 +1,90 @@
+.topbar {
+    width: 90%;
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0px 20px 0px 20px;
+}
+
+.topbar__left{
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.topbar__logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-right: 10px;
+}
+.topbar__logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.topbar__greeting__text {
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.topbar__greeting__subtext {
+    color: rgb(126, 126, 126);
+    font-size: small;
+}
+
+.topbar__profile {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: default;
+    background-color: #fafafa;
+    outline: 1px solid #d5d5d5;
+    padding: 10px 20px;
+    width: 20%;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 8px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 8px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 8px -3px rgba(0, 0, 0, 0.75);
+}
+
+.topbar__profile__image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #153e4d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    font-weight: lighter;
+    color: #fff;
+}
+
+.topbar__profile__info {
+    display: flex;
+    /* width: auto; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+.topbar__profile__info__name {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.topbar__profile__info__email {
+    color: rgb(126, 126, 126);
+    font-size: small;
+}
