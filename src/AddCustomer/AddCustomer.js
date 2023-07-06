@@ -1,24 +1,10 @@
 import React, { useState } from 'react'
 import './AddCustomer.css'
-import { FaChevronDown, FaBars, FaFacebook, FaInstagram } from 'react-icons/fa';
-import logoBlack from '../assets/images/logo-black.png'
-import logo from '../assets/images/logo.png'
-import { FaHome, FaUser, FaSignOutAlt } from 'react-icons/fa';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Topbar from '../components/Topbar/Topbar';
 
-function AddCustomer({ User }) {
-    const navigate = useNavigate();
-    const fullName = "Omair Mairaj";
-    const company_name = "OMA PVT LTD";
-    const email = "omairmairaj@gmail.com"
-
-    const [oldPasswordType, setOldPasswordType] = useState('password');
-    const [passwordType, setPasswordType] = useState("password");
-    const [passwordType2, setPasswordType2] = useState("password");
+function AddCustomer() {
     const [clientType, setClientType] = useState('individual');
     const [openSidebar, setOpenSidebar] = React.useState(false);
 
@@ -42,9 +28,9 @@ function AddCustomer({ User }) {
             <Sidebar setOpenSidebar={(item) => {
                 setOpenSidebar(item);
             }}
-                openSidebar={openSidebar} User={User} />
+                openSidebar={openSidebar} />
             <div className='add__customer__container' style={{ width: openSidebar ? '90%' : null }}>
-                <Topbar openSidebar={openSidebar} User={User} />
+                <Topbar openSidebar={openSidebar} />
                 <div className='add__customer__container__content'>
                     <div className='add__customer__container__content__heading'>ADD NEW CUSTOMER</div>
                     <div className='add__customer__container__content__edit__info'>

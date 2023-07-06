@@ -6,11 +6,12 @@ import Footer from '../components/Footer/Footer';
 import Pagination from '../components/Pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
 import data from '../data/Customer.json'
+import CustomerModal from '../CustomerModal/CustomerModal';
 
-function Customer({ User }) {
+function Customer() {
     const navigate = useNavigate();
+    const User = JSON.parse(sessionStorage.getItem('user'));
     const [openSidebar, setOpenSidebar] = React.useState(false);
-    const [activeTab, setActiveTab] = React.useState('purchase');
     // const data = [];
     // for (let i = 0; i < 50; i++) {
     //     data.push(i);
@@ -19,7 +20,51 @@ function Customer({ User }) {
     const [currentPage, setCurrentPage] = React.useState(1);
     const [cardsPerPage] = React.useState(50);
     const [searchField, setSearchField] = React.useState("");
+    const [customerData, setCustomerData] = React.useState();
     const [openCustomerModal, setOpenCustomerModal] = React.useState(false);
+    const hasWindow = typeof window !== "undefined";
+    const [windowDimensions, setWindowDimensions] = React.useState(
+        getWindowDimensions()
+    );
+
+    function getWindowDimensions() {
+        const width = hasWindow ? window.innerWidth : null;
+        return {
+            width,
+        };
+    }
+
+    React.useEffect(() => {
+        if (
+            openCustomerModal
+        ) {
+            document.body.style.overflow = "hidden";
+            document.body.style.height = "100vh";
+            document.body.style.paddingRight = "15px";
+        } else {
+            document.body.style.overflow = "unset";
+            document.body.style.height = "unset";
+            document.body.style.paddingRight = "unset";
+        }
+    }, [openCustomerModal]);
+
+    React.useEffect(() => {
+        if (hasWindow) {
+            function handleResize() {
+                setWindowDimensions(getWindowDimensions());
+            }
+            window.addEventListener("resize", handleResize);
+            return () => window.removeEventListener("resize", handleResize);
+        }
+    }, [hasWindow]);
+
+    function handleClickModal(data) {
+        console.log(data.fullName, User.fullName)
+        if (data.salePerson === User.fullName) {
+            setCustomerData(data);
+            setOpenCustomerModal(true)
+        }
+    }
 
 
     const paginate = (pageNumber) => {
@@ -27,19 +72,15 @@ function Customer({ User }) {
         window.scrollTo(0, 0);
     };
 
-    const CustomerModal = (item) => {
-        setOpenCustomerModal(item);
-    }
-
     return (
         <div className='customer'>
             <Sidebar setOpenSidebar={(item) => {
                 setOpenSidebar(item);
             }}
                 openSidebar={openSidebar}
-                User={User} />
+                 />
             <div className='customer__container' style={{ width: openSidebar ? '90%' : null }}>
-                <Topbar openSidebar={openSidebar} User={User}/>
+                <Topbar openSidebar={openSidebar} />
                 <div className='customer__container__content'>
                     <div className='customer__container__content__heading'>CUSTOMERS</div>
                     <div className='customer__container__content__invoices'>
@@ -70,7 +111,7 @@ function Customer({ User }) {
                             <div className='customer__container__content__invoices__table__rows'>
                                 {data.map((item, index) => {
                                     return (
-                                        <div className='customer__container__content__invoices__table__row' onClick={() => CustomerModal(item)}>
+                                        <div className='customer__container__content__invoices__table__row' style={{ cursor: item.salePerson === User.fullName ? 'cursor' : 'default' }} onClick={() => handleClickModal(item)}>
                                             {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '5vw' }}></div> */}
                                             <div className='customer__container__content__invoices__table__row__item' style={{ width: '10vw' }}>{item.customer_id}</div>
                                             <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw' }}>{item.fullName}</div>
@@ -117,6 +158,13 @@ function Customer({ User }) {
                 </div>
                 <Footer />
             </div>
+            {openCustomerModal && (
+                <CustomerModal
+                    data={customerData}
+                    openCustomerModal={openCustomerModal}
+                    setOpenCustomerModal={setOpenCustomerModal}
+                />
+            )}
         </div>
     )
 }

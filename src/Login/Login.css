@@ -16,7 +16,7 @@
     position: relative;
 }
 
-.login__container__bg{
+.login__container__bg {
     width: 100%;
     height: 100%;
     position: relative;
@@ -29,22 +29,23 @@
     /* border-radius: 10px 10px 0px 0px; */
 }
 
-.login__container__img{
+.login__container__img {
     width: 45%;
     /* height: 100px; */
     position: absolute;
     top: 2%;
     left: 5%;
-    
+
     /* opacity: 0.5; */
 }
-.login__container__img img{
+
+.login__container__img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.login__container__content{
+.login__container__content {
     /* position: absolute; */
     /* bottom: 10px; */
     width: 98%;
@@ -60,7 +61,7 @@
     /* border-radius: 0px 0px 10px 10px; */
 }
 
-.login__container__heading{
+.login__container__heading {
     font-size: 2rem;
     font-weight: 600;
     color: #153e4d;
@@ -69,7 +70,7 @@
     padding: 0px;
 }
 
-.login__container__form{
+.login__container__form {
     width: 70%;
     /* height: 50%; */
     display: flex;
@@ -78,7 +79,7 @@
     align-items: center;
 }
 
-.login__container__form__group{
+.login__container__form__group {
     width: 100%;
     height: 30px;
     margin: 10px;
@@ -88,7 +89,7 @@
     align-items: center;
 }
 
-.login__container__form__group label{
+.login__container__form__group label {
     font-size: 1rem;
     font-weight: 600;
     color: #153e4d;
@@ -98,7 +99,7 @@
     width: 30%;
 }
 
-.login__container__form__group input{
+.login__container__form__group input {
     width: 70%;
     height: 100%;
     border: 1px solid #9c9c9cb4;
@@ -114,14 +115,16 @@
     margin: 0px;
     padding: 0px 10px;
 }
-.login__container__form__group input:focus{
+
+.login__container__form__group input:focus {
     outline: 1px solid #153e4d9e;
 }
-.login__container__form__group input::placeholder{
+
+.login__container__form__group input::placeholder {
     font-size: 0.8rem;
 }
 
-.login__container__form__group__icon{
+.login__container__form__group__icon {
     position: absolute;
     right: 17%;
     color: #153e4dc0;
@@ -129,7 +132,7 @@
     cursor: pointer;
 }
 
-.login__container__form__group button{
+.login__container__form__group button {
     width: 100%;
     height: 40px;
     margin-top: 20px;
@@ -139,29 +142,185 @@
     background-color: #153e4d;
     cursor: pointer;
 }
-.login__container__form__group button:hover{
+
+.login__container__form__group button:hover {
     filter: brightness(1.1)
 }
 
-.login__container__forgot__link{
+.login__container__forgot__link {
     margin-top: 10px;
     color: #153e4d;
     font-size: 1rem;
 }
-.login__container__forgot__link:hover{
+
+.login__container__forgot__link:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-.login__container__signup__link{
+.login__container__signup__link {
     margin-top: 20px;
     font-size: 1rem;
 }
-.login__container__signup__link span{
+
+.login__container__signup__link span {
     cursor: pointer;
     color: #153e4d;
     font-weight: 600;
 }
-.login__container__signup__link span:hover{
+
+.login__container__signup__link span:hover {
     text-decoration: underline;
 }
+
+.login__screen__content__success {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0px;
+}
+
+.successful__login {
+    color: #000;
+    font-size: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.successful__login__icon {
+    padding: 0px;
+    color: #153e4d;
+    margin-bottom: 20px;
+}
+
+.successful__login__text {
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* PRELOADER CODE */
+.login__preloader {
+    /* margin: auto; */
+    /* height: 90%; */
+    /* width: 90%; */
+    /* margin: auto auto; */
+    /* border-radius: 50%; */
+    /* border-right: 9px solid rgba(255, 255, 255, 0.8); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    background-color: #153e4d;
+    /* cursor: pointer; */
+    
+}
+
+.login__preloader__icon {
+    width: 25px;
+    height: 25px;
+    animation: spinning 3s linear infinite;
+}
+
+@keyframes spinning {
+    0% {
+      transform: rotate(0deg);
+      /* border-right: 9px solid rgba(255, 255, 255, 0.6); */
+    }
+  
+    5% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    10% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    15% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    20% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    25% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    30% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    35% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    40% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    45% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    50% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    55% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    60% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    65% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    70% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    75% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    80% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    85% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    90% {
+      /* border-right-color: rgba(255, 255, 255, 0.6) */
+    }
+  
+    95% {
+      /* border-right-color: rgba(255, 255, 255, 0.4) */
+    }
+  
+    100% {
+      transform: rotate(360deg);
+      /* border-right: 9px solid rgba(255, 255, 255, 0.6); */
+    }
+  }
+  

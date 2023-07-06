@@ -1,21 +1,11 @@
 import React, { useState } from 'react'
 import './Profile.css'
-import { FaChevronDown, FaBars, FaFacebook, FaInstagram } from 'react-icons/fa';
-import logoBlack from '../assets/images/logo-black.png'
-import logo from '../assets/images/logo.png'
-import { FaHome, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Topbar from '../components/Topbar/Topbar';
 
-function Profile({ User }) {
-    const navigate = useNavigate();
-    const fullName = "Omair Mairaj";
-    const company_name = "OMA PVT LTD";
-    const email = "omairmairaj@gmail.com"
-
+function Profile() {
     const [oldPasswordType, setOldPasswordType] = useState('password');
     const [passwordType, setPasswordType] = useState("password");
     const [passwordType2, setPasswordType2] = useState("password");
@@ -42,9 +32,9 @@ function Profile({ User }) {
             <Sidebar setOpenSidebar={(item) => {
                 setOpenSidebar(item);
             }}
-                openSidebar={openSidebar} User={User}/>
+                openSidebar={openSidebar} />
             <div className='profile__container' style={{ width: openSidebar ? '90%' : null }}>
-                <Topbar openSidebar={openSidebar} User={User} />
+                <Topbar openSidebar={openSidebar} />
                 <div className='profile__container__content'>
                     <div className='dashboard__container__content__heading'>UPDATE PROFILE</div>
                     <div className='profile__container__content__edit__info'>

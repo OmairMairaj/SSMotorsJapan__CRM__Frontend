@@ -1,7 +1,7 @@
 .customer {
     display: flex;
     /* overflow: hidden; */
-    position: static;
+    position: relative;
     justify-content: flex-end;
 }
 
@@ -181,4 +181,12 @@
     text-align: center;
     font-weight: bold;
     font-size: 0.6rem;
+}
+
+
+.customer__container__content__invoices__modal{
+    background-color: #000000c2;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
 }

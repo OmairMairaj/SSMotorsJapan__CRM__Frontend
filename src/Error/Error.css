@@ -1,0 +1,12 @@
+.errorContainer{
+    min-height: 100vh;
+    max-height: 100vh;
+    background: #e8f3ff;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+}

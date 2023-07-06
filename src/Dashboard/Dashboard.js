@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Topbar from '../components/Topbar/Topbar';
 
-function Dashboard({ User }) {
+function Dashboard({ User, setUser }) {
     const [openSidebar, setOpenSidebar] = React.useState(false);
     const [activeTab, setActiveTab] = React.useState('purchase');
 
@@ -14,9 +14,10 @@ function Dashboard({ User }) {
                 setOpenSidebar(item);
             }}
                 openSidebar={openSidebar}
-                User={User} />
+                User={User}
+                setUser={(item) => setUser(item)} />
             <div className='dashboard__container' style={{ width: openSidebar ? '90%' : null }}>
-                <Topbar openSidebar={openSidebar} User={User}/>
+                <Topbar openSidebar={openSidebar} User={User} />
                 <div className='dashboard__container__content'>
                     <div className='dashboard__container__content__heading'>MY ACCOUNT</div>
                     <div className='dashboard__container__content__infoboxes'>
