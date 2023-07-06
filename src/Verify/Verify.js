@@ -12,6 +12,13 @@ export default function Verify() {
     const confirmationCode = new URLSearchParams(search).get("code")
     const [MyText, setMyText] = React.useState("Verifying Email...")
 
+
+    React.useEffect(() => {
+        if(sessionStorage.getItem('user')){
+            navigate('/dashboard');
+        }
+    }, []);
+
     React.useEffect(() => {
         console.log(confirmationCode);
         if (!confirmationCode) {

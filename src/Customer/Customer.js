@@ -59,8 +59,8 @@ function Customer() {
     }, [hasWindow]);
 
     function handleClickModal(data) {
-        console.log(data.fullName, User.fullName)
-        if (data.salePerson === User.fullName) {
+        console.log(data.fullName, User.fullname)
+        if (data.salePerson === User.fullname) {
             setCustomerData(data);
             setOpenCustomerModal(true)
         }

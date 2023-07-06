@@ -20,6 +20,12 @@ function Login({ User, setUser }) {
     const [successfulLogin, setSuccessfulLogin] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
+    React.useEffect(() => {
+        if(sessionStorage.getItem('user')){
+            navigate('/dashboard');
+        }
+    }, []);
+
 
 
     const handleSubmit = (e) => {

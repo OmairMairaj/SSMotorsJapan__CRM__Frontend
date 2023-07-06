@@ -13,7 +13,7 @@ function Topbar({ openSidebar }) {
                     <img src={logoBlack} alt="logo" />
                 </div>
                 <div className="topbar__greeting">
-                    <div className='topbar__greeting__text'>Hi, {User.fullname.toUpperCase()}</div>
+                    <div className='topbar__greeting__text'>Hi, {User ? User.fullname.toUpperCase() : null}</div>
                     <div className='topbar__greeting__subtext'>{location.pathname === '/dashboard' ? `Here's all your invoices` : 
                     location.pathname === '/profile' ? `Heres all your personal information` :
                     location.pathname === '/customer' ? `Here's all customers` :
@@ -22,10 +22,10 @@ function Topbar({ openSidebar }) {
                 </div>
             </div>
             <div className='topbar__profile'>
-                <div className='topbar__profile__image'>{User.fullname.charAt(0).toUpperCase()}</div>
+                <div className='topbar__profile__image'>{User ? User.fullname.charAt(0).toUpperCase(): null}</div>
                 <div className='topbar__profile__info'>
-                    <div className='topbar__profile__info__name'>{User.fullname}</div>
-                    <div className='topbar__profile__info__email'>{User.email}</div>
+                    <div className='topbar__profile__info__name'>{User ? User.fullname : null}</div>
+                    <div className='topbar__profile__info__email'>{User ? User.email : null}</div>
                 </div>
             </div>
         </div>

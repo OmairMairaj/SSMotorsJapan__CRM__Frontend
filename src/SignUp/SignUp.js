@@ -9,6 +9,15 @@ function SignUp() {
     const [passwordType, setPasswordType] = useState("password");
     const [passwordType2, setPasswordType2] = useState("password");
     const [clientType, setClientType] = useState('individual');
+
+
+    React.useEffect(() => {
+        if(sessionStorage.getItem('user')){
+            navigate('/dashboard');
+        }
+    }, []);
+
+    
     return (
         <div className='singup'>
             <div className='singup__container'>

@@ -37,10 +37,10 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
                     console.log(res);
                     console.log(res.status);
                     if (res.status === 200) {
+                        setLogout(false);
                         console.log(res.data);
+                        sessionStorage.clear('user');
                         navigate("/");
-                        sessionStorage.clear();
-                        // setLogout(false);
                     }
                 })
                 .catch((err) => {
@@ -61,7 +61,7 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
                     <img src={logo} alt="logo" />
                 </div>
                 <div className='sidebar__menu'>
-                    {User.role === 'client' ?
+                    {User && User.role === 'client' ?
                         <div className='sidebar__menu__pages'>
                             <div className='sidebar__menu__pages__item' style={!openSidebar ? { width: '40%', backgroundColor: 'transparent' } : null} onClick={() => navigate('/dashboard')}>
                                 <div className='sidebar__menu__pages__item__icon' style={!openSidebar ? { width: '100%', marginRight: '0px' } : null}><FaHome /></div>
@@ -73,7 +73,7 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
                             </div>
                         </div>
                         :
-                        User.role === 'sale' ?
+                        User && User.role === 'sale' ?
                             <div className='sidebar__menu__pages'>
                                 <div className='sidebar__menu__pages__item' style={!openSidebar ? { width: '40%', backgroundColor: 'transparent' } : null} onClick={() => navigate('/dashboard')}>
                                     <div className='sidebar__menu__pages__item__icon' style={!openSidebar ? { width: '100%', marginRight: '0px' } : null}><FaHome /></div>
@@ -93,7 +93,7 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
                                 </div>
                             </div>
                             :
-                            User.role === 'admin' ?
+                            User && User.role === 'admin' ?
                                 <div className='sidebar__menu__pages'>
                                     <div className='sidebar__menu__pages__item' style={!openSidebar ? { width: '40%', backgroundColor: 'transparent' } : null} onClick={() => navigate('/dashboard')}>
                                         <div className='sidebar__menu__pages__item__icon' style={!openSidebar ? { width: '100%', marginRight: '0px' } : null}><FaHome /></div>
