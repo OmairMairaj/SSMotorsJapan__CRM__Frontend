@@ -21,6 +21,19 @@ function AdminDashboard() {
                 openSidebar={openSidebar}
                 navigate={(nav) => navigate(nav)}/>
             <div className='admin__dashboard__container' style={{ width: openSidebar ? '90%' : null }}>
+            <ul class="bg">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    {/* Add other <li> elements here */}
+                </ul>
                 <Topbar openSidebar={openSidebar} />
                 <div className='admin__dashboard__container__content'>
                     <div className='admin__dashboard__container__content__heading'>MY ACCOUNT</div>

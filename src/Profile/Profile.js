@@ -29,6 +29,18 @@ function Profile() {
 
     return (
         <div className='profile'>
+            <ul class="bg">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <Sidebar setOpenSidebar={(item) => {
                 setOpenSidebar(item);
             }}

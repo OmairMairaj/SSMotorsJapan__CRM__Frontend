@@ -74,7 +74,7 @@
 
 .sidebar__menu__pages__item{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     width: 100%;
     padding: 10px;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
 import logo from '../assets/images/logo.png'
-import { FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa'
+import { FaCheckCircle, FaEye, FaEyeSlash, FaExclamationCircle } from 'react-icons/fa'
 import { AiOutlineLoading } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
 import data from '../data/users.json';
@@ -21,7 +21,7 @@ function Login({ User, setUser }) {
     const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
-        if(sessionStorage.getItem('user')){
+        if (sessionStorage.getItem('user')) {
             navigate('/dashboard');
         }
     }, []);
@@ -159,6 +159,18 @@ function Login({ User, setUser }) {
 
     return (
         <div className='login'>
+            <ul class="bg">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <div className='login__container'>
                 <div className="login__container__bg">
                     <div className="login__container__img">
@@ -204,8 +216,8 @@ function Login({ User, setUser }) {
                                 </div>
                                 {errorMessage ? (
                                     <div className="error__message">
-                                        <i className="error__icon fas fa-exclamation-circle"></i>
-                                        <span>{errorMessage}</span>
+                                        <FaExclamationCircle />
+                                        <div style={{ marginLeft: '5px' }}>{errorMessage}</div>
                                     </div>
                                 ) : null
                                 }
@@ -215,7 +227,7 @@ function Login({ User, setUser }) {
                                     </div>
                                     :
                                     <div className='login__container__form__group'>
-                                        <button >Login</button>
+                                        <button type='submit'>Login</button>
                                     </div>
                                 }
 

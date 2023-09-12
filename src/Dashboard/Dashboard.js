@@ -11,6 +11,18 @@ function Dashboard() {
 
     return (
         <div className='dashboard'>
+            <ul class="bg">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <Sidebar setOpenSidebar={(item) => {
                 setOpenSidebar(item);
             }}

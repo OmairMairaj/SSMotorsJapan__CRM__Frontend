@@ -109,7 +109,7 @@ function CustomerModal({ data, openCustomerModal, setOpenCustomerModal }) {
                     <div class="modal__close__button" onClick={() => setOpenCustomerModal(false)}><AiOutlineClose /></div>
                     <div class="modal__screen__content">
                         <div className='modal__screen__content__top'>
-                            <div className='modal__profile__image'>{data.fullName.charAt(0).toUpperCase()}</div>
+                            <div className='modal__profile__image'>{data.fullname.charAt(0).toUpperCase()}</div>
                             <div className='modal__profile__box'>
                                 <div className='modal__profile__info'>
                                     <div className='modal__profile__info__label'>Customer ID: </div>
@@ -117,23 +117,23 @@ function CustomerModal({ data, openCustomerModal, setOpenCustomerModal }) {
                                 </div>
                                 <div className='modal__profile__info'>
                                     <div className='modal__profile__info__label'>Full Name: </div>
-                                    <div className='modal__profile__info__value'>{data.fullName}</div>
+                                    <div className='modal__profile__info__value'>{data.fullname}</div>
                                 </div>
                                 <div className='modal__profile__info'>
                                     <div className='modal__profile__info__label'>Email: </div>
-                                    <div className='modal__profile__info__value'>{data.altEmail != '' ? `${data.email} / ${data.altEmail}` : data.email}</div>
+                                    <div className='modal__profile__info__value'>{data.altemail != '' ? `${data.email} / ${data.altemail}` : data.email}</div>
                                 </div>
                                 <div className='modal__profile__info'>
                                     <div className='modal__profile__info__label'>Contact No: </div>
-                                    <div className='modal__profile__info__value'>{data.altContactNo != '' ? `${data.contactNo} / ${data.altContactNo}` : data.contactNo}</div>
+                                    <div className='modal__profile__info__value'>{data.contact2 != '' ? `${data.contact} / ${data.contact2}` : data.contact}</div>
                                 </div>
                                 <div className='modal__profile__info'>
                                     <div className='modal__profile__info__label'>Company Name: </div>
-                                    <div className='modal__profile__info__value'>{data.companyName}</div>
+                                    <div className='modal__profile__info__value'>{data.company}</div>
                                 </div>
                             </div>
                             <div className='modal__profile__status__box'>
-                                <div className='modal__profile__status'>{data.status}</div>
+                                <div className='modal__profile__status'>{data.customerStatus.toUpperCase()}</div>
                             </div>
                         </div>
                         <div className='modal__screen__content__bottom'>
@@ -148,7 +148,7 @@ function CustomerModal({ data, openCustomerModal, setOpenCustomerModal }) {
                                 </div>
                                 <div className='modal__profile__info2'>
                                     <div className='modal__profile__info2__label'>Sale Person: </div>
-                                    <div className='modal__profile__info2__value'>{data.salePerson}</div>
+                                    <div className='modal__profile__info2__value'>{data.salesPerson}</div>
                                 </div>
                             </div>
                             <div className='modal__screen__content__bottom__right'>

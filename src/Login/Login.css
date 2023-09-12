@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e8f3ff;
+    /* background-color: #e8f3ff; */
 }
 
 .login__container {
@@ -208,6 +208,13 @@
     padding: 0px;
 }
 
+.error__message{
+  color: red;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
 /* PRELOADER CODE */
 .login__preloader {
     /* margin: auto; */
@@ -323,4 +330,3 @@
       /* border-right: 9px solid rgba(255, 255, 255, 0.6); */
     }
   }
-  

@@ -6,7 +6,7 @@
 }
 
 .dashboard__container {
-    background-color: #e8f3ff;
+    /* background-color: #e8f3ff; */
     min-height: 100vh;
     width: 97%;
     display: flex;

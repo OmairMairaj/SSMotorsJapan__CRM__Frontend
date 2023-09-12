@@ -5,6 +5,8 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import Topbar from '../components/Topbar/Topbar';
 import customerList from '../data/Customer.json';
 import bankAccounts from '../data/BankAccounts.json';
+import axios from 'axios';
+axios.defaults.withCredentials = true
 
 function CreateInvoice() {
     const User = JSON.parse(sessionStorage.getItem('user'));
@@ -14,10 +16,13 @@ function CreateInvoice() {
     const [hasConignee, setHasConignee] = React.useState(false);
     const [consignee, setConsignee] = React.useState('');
     const [selectedAccount, setSelectedAccount] = React.useState({});
-    const [paymentTerm, setPaymentTerm] = React.useState('');
+    const [paymentTerm, setPaymentTerm] = React.useState('---Payment Term---');
+    const [bankAccount, setBankAccount] = React.useState('---Bank Account---');
     const [tradeTerm, setTradeTerm] = React.useState('');
     const [portDischarging, setPortDischarging] = React.useState('');
     const [vehicles, setVehicles] = React.useState([]);
+    const [paymentTermsList, setPaymentTermsList] = React.useState([]);
+    const [bankAccountsList, setBankAccountsList] = React.useState([]);
 
 
     const wrapperRef = React.useRef(null);
@@ -34,6 +39,43 @@ function CreateInvoice() {
         };
     }, [wrapperRef]);
 
+
+    React.useEffect(() => {
+        fetchPaymentTermsList();
+        fetchBankAccountsList();
+        
+    }, [])
+
+    const fetchPaymentTermsList = async () => {
+        console.log(User);
+        try {
+            const response = await axios.get("" + process.env.REACT_APP_BACKEND_URL + 'api/payment-term/getAll');
+            setPaymentTermsList(response.data.data);
+            console.log(response.data.data);
+        } catch (error) {
+            console.error('Error fetching payment terms', error);
+        }
+    };
+
+    const fetchBankAccountsList = async () => {
+        try {
+            const response = await axios.get("" + process.env.REACT_APP_BACKEND_URL + 'api/bank-account/getAll');
+            setBankAccountsList(response.data.data);
+            console.log(response.data.data);
+        } catch (error) {
+            console.error('Error fetching accounts', error);
+        }
+    };
+
+    const changePaymentTerm = (event) => {
+        setPaymentTerm(event.target.value);
+        // setCities(countriesList.find(ctr => ctr.name === event.target.value).cities)
+    }
+    // const changeBankAccount = (event) => {
+    //     setBankAccount(event.target.value);
+    //     // setCities(countriesList.find(ctr => ctr.name === event.target.value).cities)
+    // }
+
     const handleChangeCustomer = event => {
         console.log(event.target.value);
         customerList.map((item, index) => {
@@ -46,7 +88,7 @@ function CreateInvoice() {
 
     const handleChangeAccount = event => {
         console.log(event.target.value);
-        bankAccounts.map((item, index) => {
+        bankAccountsList.map((item, index) => {
             if (item.accountName === event.target.value) {
                 setSelectedAccount(item);
             }
@@ -70,7 +112,7 @@ function CreateInvoice() {
         e.preventDefault();
         const invoice = {
             invoice_id: "P-01001",
-            agentName: User.fullName,
+            agentName: User.fullname,
             date: new Date().toJSON().slice(0, 10),
             dealerName: selectedCustomer.fullName,
             hasConignee: hasConignee,
@@ -178,11 +220,20 @@ function CreateInvoice() {
                                     <label className='create__invoice__container__form__section__label'>Payment and Shipping</label>
                                     <div className='create__invoice__container__form__group'>
                                         <label>Bank Account: <span>*</span></label>
-                                        <select required name="bank__account" placeholder='Select Bank Account' value={selectedAccount.accountName} onChange={handleChangeAccount}>
+                                        {/* <select required name="bank__account" placeholder='Select Bank Account' value={selectedAccount.accountName} onChange={handleChangeAccount}>
                                             <option value="" selected hidden>Select Bank Account</option>
                                             {bankAccounts.map((item, index) => {
                                                 return (
                                                     <option key={item.accountName} value={item.accountName}>{item.accountName}</option>
+                                                )
+                                            })}
+                                        </select> */}
+                                        <select required value={selectedAccount.accountName} onChange={handleChangeAccount}>
+                                            <option hidden>---Bank Account---</option>
+                                            {/* {console.log(cities)} */}
+                                            {bankAccountsList.map((item) => {
+                                                return (
+                                                    <option value={item.accountName}>{item.accountName}</option>
                                                 )
                                             })}
                                         </select>
@@ -198,12 +249,21 @@ function CreateInvoice() {
                                     </div> */}
                                     <div className='create__invoice__container__form__group'>
                                         <label>Payment Terms: <span>*</span></label>
-                                        <select required name="payment__terms" placeholder='Select Payment Term' value={paymentTerm} onChange={(e) => setPaymentTerm(e.target.value)}>
+                                        {/* <select required name="payment__terms" placeholder='Select Payment Term' value={paymentTerm} onChange={(e) => setPaymentTerm(e.target.value)}>
                                             <option value="" selected hidden>Select Payment Term</option>
                                             <option value='30%'>30%</option>
                                             <option value='50%'>50%</option>
                                             <option value='70%'>70%</option>
                                             <option value='100%'>100%</option>
+                                        </select> */}
+                                        <select required value={paymentTerm} onChange={changePaymentTerm}>
+                                            <option hidden>---Payment Term---</option>
+                                            {/* {console.log(cities)} */}
+                                            {paymentTermsList.map((item) => {
+                                                return (
+                                                    <option value={item.percentage}>{item.percentage}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                     <div className='create__invoice__container__form__group'>

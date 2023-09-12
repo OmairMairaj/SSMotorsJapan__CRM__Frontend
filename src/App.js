@@ -12,6 +12,10 @@ import AddCustomer from './AddCustomer/AddCustomer';
 import CreateInvoice from './CreateInvoice/CreateInvoice';
 import Verify from './Verify/Verify';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
+import AdminCustomers from './AdminCustomers/AdminCustomers';
+import AdminUsers from './AdminUsers/AdminUsers';
+import AdminInvoices from './AdminInvoices/AdminInvoices';
+import AdminSettings from './AdminSettings/AdminSettings';
 
 function App() {
   // const navigate = useNavigate();
@@ -69,6 +73,18 @@ function App() {
     }
   }
 
+  function AdminNavigation() {
+    if (User.role === 'admin') {
+      if (window.location.pathname === '/admin/customers') return <AdminCustomers />
+      else if (window.location.pathname === '/admin/users') return <AdminUsers />
+      else if (window.location.pathname === '/admin/invoices') return <AdminInvoices />
+      else if (window.location.pathname === '/admin/settings') return <AdminSettings />
+    }
+    else{
+      return <Error />;
+    }
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -81,6 +97,10 @@ function App() {
           <Route path="/customer" element={<SaleNavigation />} />
           <Route path="/add-customer" element={<SaleNavigation />} />
           <Route path="/create-invoice" element={<SaleNavigation />} />
+          <Route path="/admin/customers" element={<AdminNavigation />} />
+          <Route path="/admin/users" element={<AdminNavigation />} />
+          <Route path="/admin/invoices" element={<AdminNavigation />} />
+          <Route path="/admin/settings" element={<AdminNavigation />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
