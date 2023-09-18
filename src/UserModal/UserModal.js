@@ -34,85 +34,6 @@ function UserModal({ data, openUserModal, setOpenUserModal, refresh, setRefresh 
     const [loading, setLoading] = React.useState(false);
     const [successfull, setSuccessfull] = React.useState(false);
 
-    // const togglePasswordType = () => {
-    // if (passwordType === 'password') {
-    // setPasswordType('text');
-    // } else {
-    // setPasswordType('password');
-    // }
-    // }
-
-    // const handleSubmit = (e) => {
-    // e.preventDefault();
-    // setIsSubmit(true);
-
-    // function isValidEmail(email) {
-    // return /\S+@\S+\.\S+/.test(email);
-    // }
-
-    // const email = e.target[0].value;
-    // const password = e.target[1].value;
-
-    // if (email === '' || password === '') {
-    // setErrorMessage('All fields are required');
-    // } else if (isValidEmail(email) === false) {
-    // setErrorMessage('Please Enter Valid Email');
-    // } else {
-    // setErrorMessage('');
-    // const user = {
-    // email,
-    // password
-    // }
-
-    // axios
-    // .post(
-    // "" + process.env.REACT_APP_BACKEND_URL + "api/user/login",
-    // {
-    // email: user.email,
-    // password: user.password,
-    // }
-    // )
-    // .then((res) => {
-    // if (res.data.error) {
-    // alert(res.data.message);
-    // setErrorMessage(res.data.message);
-    // console.log(res)
-    // } else {
-    // setResponse(res.data.message)
-    // console.log(res);
-    // setIsSubmit(true);
-    // }
-    // })
-    // .catch((err) => {
-    // console.log(err);
-    // });
-    // console.log(user);
-    // }
-    // }
-
-
-    // React.useEffect(() => {
-    // const timeOutId = setTimeout(() => {
-    // if (!errorMessage && isSubmit && response) {
-    // alert(response);
-    // setSuccessfulLogin(true);
-    // }
-    // }, 1000);
-    // return () => clearTimeout(timeOutId);
-    // }, [errorMessage, isSubmit, response]);
-
-    // React.useEffect(() => {
-    // const timeOutId = setTimeout(() => {
-    // if (successfulLogin) {
-    // alert(response);
-    // setOpenLoginModal(false);
-    // setUserSession(true);
-    // history.push("/")
-    // }
-    // }, 2000);
-    // return () => clearTimeout(timeOutId);
-    // }, [successfulLogin, setOpenLoginModal]);
-
     React.useEffect(() => {
         let user = {
             user_id: data.user_id,
@@ -202,11 +123,11 @@ function UserModal({ data, openUserModal, setOpenUserModal, refresh, setRefresh 
 
     if (!openUserModal) return null;
     return (
-        <div className="user__modal" onClick={() => setOpenUserModal(false)}>
+        <div className="user__modal" onClick={() => {setOpenUserModal(false); setRefresh(!refresh);}}>
             <div class="user__modal__screen" onClick={(e) => e.stopPropagation()}>
                 <div className='user__modal__screen__clip'></div>
                 <div class="user__modal__screen__container">
-                    <div class="user__modal__close__button" onClick={() => setOpenUserModal(false)}><AiOutlineClose /></div>
+                    <div class="user__modal__close__button" onClick={() => {setOpenUserModal(false); setRefresh(!refresh);}}><AiOutlineClose /></div>
                     <div class="user__modal__screen__content">
                         <div className='user__modal__screen__content__top'>
                             <div className='user__modal__profile__image'>{data.fullname.charAt(0).toUpperCase()}</div>
@@ -296,7 +217,7 @@ function UserModal({ data, openUserModal, setOpenUserModal, refresh, setRefresh 
                                 >
                                     <option value={data.role} selected hidden>{data.role.toUpperCase()}</option>
                                     <option key="admin" value="admin">ADMIN</option>
-                                    <option key="client" value="client">CLIENT</option>
+                                    {/* <option key="client" value="client">CLIENT</option> */}
                                     <option key="sale" value="sale">SALE</option>
                                 </select>
                                 {/* <select required name="dealer__name" placeholder='Select Customer' value={selectedCustomer.fullName} onChange={handleChangeCustomer}>

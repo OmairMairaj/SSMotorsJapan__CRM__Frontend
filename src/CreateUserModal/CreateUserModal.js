@@ -210,11 +210,11 @@ function CreateUserModal({ openNewUserModal, setOpenNewUserModal, refresh, setRe
 
     if (!openNewUserModal) return null;
     return (
-        <div className="create__user__modal" onClick={() => setOpenNewUserModal(false)}>
+        <div className="create__user__modal" onClick={() => {setOpenNewUserModal(false); setRefresh(!refresh)}}>
             <div class="create__user__modal__screen" onClick={(e) => e.stopPropagation()}>
                 <div className='create__user__modal__screen__clip'></div>
                 <div class="create__user__modal__screen__container">
-                    <div class="create__user__modal__close__button" onClick={() => setOpenNewUserModal(false)}><AiOutlineClose /></div>
+                    <div class="create__user__modal__close__button" onClick={() => {setOpenNewUserModal(false); setRefresh(!refresh);}}><AiOutlineClose /></div>
                     <div class="create__user__modal__screen__content">
                         <div className='create__user__modal__screen__content__top'>
                             <FaUserPlus style={{ color: '#153e4d' }} size={40} />

@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom';
 // import data from '../data/Customer.json'
 import CustomerModal from '../CustomerModal/CustomerModal';
 import CreateCustomerModal from '../CreateCustomerModal/CreateCustomerModal';
-import { FaPlusCircle } from 'react-icons/fa';
+import CustomerUpdateModal from '../CustomerUpdateModal/CustomerUpdateModal';
+import { FaEdit, FaPlusCircle } from 'react-icons/fa';
 import axios from 'axios';
 axios.defaults.withCredentials = true
 
@@ -36,6 +37,7 @@ function AdminCustomers() {
     const [finalData, setFinalData] = React.useState([]);
     const [finalDataFiltered, setFinalDataFiltered] = React.useState([]);
     const [openCreateCustomerModal, setOpenCreateCustomerModal] = React.useState(false);
+    const [openCustomerUpdateModal, setOpenCustomerUpdateModal] = React.useState(false);
     const hasWindow = typeof window !== "undefined";
     const [windowDimensions, setWindowDimensions] = React.useState(
         getWindowDimensions()
@@ -111,8 +113,6 @@ function AdminCustomers() {
                     filteredRecords.push(record);
                 } else if (record.salesPerson.toLowerCase().includes(searchText)) {
                     filteredRecords.push(record);
-                } else if (record.customerStatus.toLowerCase().includes(searchText)) {
-                    filteredRecords.push(record);
                 } else if (record.prefCurrency.toLowerCase().includes(searchText)) {
                     filteredRecords.push(record);
                 }
@@ -125,7 +125,7 @@ function AdminCustomers() {
 
     React.useEffect(() => {
         if (
-            openCustomerModal || openCreateCustomerModal
+            openCustomerModal || openCreateCustomerModal || openCustomerUpdateModal
         ) {
             document.body.style.overflow = "hidden";
             document.body.style.height = "100vh";
@@ -135,7 +135,7 @@ function AdminCustomers() {
             document.body.style.height = "unset";
             document.body.style.paddingRight = "unset";
         }
-    }, [openCustomerModal, openCreateCustomerModal]);
+    }, [openCustomerModal, openCreateCustomerModal || openCustomerUpdateModal]);
 
     React.useEffect(() => {
         if (hasWindow) {
@@ -155,6 +155,12 @@ function AdminCustomers() {
         // }
     }
 
+    function handleUpdateModal(data, e) {
+        e.stopPropagation();
+        setCustomerData(data);
+        setOpenCustomerModal(false);
+        setOpenCustomerUpdateModal(true);
+    }
 
     // const paginate = (pageNumber) => {
     //     navigate("/customer?q=" + searchField + "&pag=" + pageNumber)
@@ -197,7 +203,7 @@ function AdminCustomers() {
                         </div>
                         <div className='customer__container__content__invoices__filter'>
                             <div className='customer__container__content__invoices__filter__search'>
-                                <input type='text' placeholder='Search by Name, Company, Country, SalePerson, Preferred Currency or Status' value={searchField} onChange={handleSearch} />
+                                <input type='text' placeholder='Search by Name, Company, Country, SalePerson or Preferred Currency' value={searchField} onChange={handleSearch} />
                             </div>
                             {searchField && finalDataFiltered ?
                                 <div className='customer__container__content__invoices__filter__records__found'>Showing Records: {finalDataFiltered.length}/{finalData.length}</div>
@@ -208,41 +214,27 @@ function AdminCustomers() {
                         </div>
                         <div className='customer__container__content__invoices__table'>
                             <div className='customer__container__content__invoices__table__header'>
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '5vw' }}></div> */}
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '10vw' }}>Customer ID</div>
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '12vw' }}>Customer's Name</div>
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '15vw' }}>Company Name</div>
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '12vw' }}>Email</div> */}
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '9vw' }}>Contact no</div> */}
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '10vw' }}>Country</div>
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '12vw' }}>Sale Person</div>
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '12vw' }}>Alt. Email</div> */}
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '8vw' }}>Alt Contact no</div> */}
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '6vw' }}>Type</div> */}
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '8vw' }}>Pref. Currency</div>
-                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '8vw' }}>Status</div>
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '6vw' }}>City</div> */}
-                                {/* <div className='customer__container__content__invoices__table__header__item' style={{ width: '20vw' }}>Address</div> */}
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '12vw' }}>Customer ID</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '17vw' }}>Customer's Name</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '17vw' }}>Company Name</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '12vw' }}>Country</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '17vw' }}>Sale Person</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '9vw' }}>Pref. Currency</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '10vw' }}>Status</div>
+                                <div className='customer__container__content__invoices__table__header__item' style={{ width: '8vw' }}></div>
                             </div>
                             <div className='customer__container__content__invoices__table__rows'>
                                 {finalDataFiltered ? finalDataFiltered.map((item, index) => {
                                     return (
                                         <div className='customer__container__content__invoices__table__row' onClick={() => handleClickModal(item)}>
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '5vw' }}></div> */}
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '10vw' }}>{item.customer_id}</div>
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw' }}>{item.fullname}</div>
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '15vw' }}>{item.company}</div>
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw' }}>Email</div> */}
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '9vw' }}>Contact no</div> */}
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '10vw' }}>{item.country}</div>
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw' }}>{item.salesPerson}</div>
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw' }}>Alt. Email</div> */}
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '8vw' }}>Alt Contact no</div> */}
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '6vw' }}>Type</div> */}
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '8vw' }}>{item.prefCurrency}</div>
-                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '8vw' }}>{item.customerStatus.toUpperCase()}</div>
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '6vw' }}>City</div> */}
-                                            {/* <div className='customer__container__content__invoices__table__row__item' style={{ width: '20vw' }}>Address</div> */}
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw', textAlign: 'center' }}>{item.customer_id}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '17vw' }}>{item.fullname}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '17vw' }}>{item.company}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '12vw', textAlign: 'center' }}>{item.country}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '17vw', textAlign: 'center' }}>{item.salesPerson}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '9vw', textAlign: 'center' }}>{item.prefCurrency}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '10vw', textAlign: 'center' }}>{item.customerStatus.toUpperCase()}</div>
+                                            <div className='customer__container__content__invoices__table__row__item' style={{ width: '7.5vw', textAlign: 'center', color: '#56a8ff' }} onClick={(e) => handleUpdateModal(item, e)}><FaEdit size={20} /></div>
                                         </div>
                                     )
                                 }
@@ -278,7 +270,7 @@ function AdminCustomers() {
                 </div>
                 <Footer />
             </div>
-            {openCustomerModal && (
+            {openCustomerModal && !openCustomerUpdateModal && (
                 <CustomerModal
                     data={customerData}
                     openCustomerModal={openCustomerModal}
@@ -289,6 +281,15 @@ function AdminCustomers() {
                 <CreateCustomerModal
                     openCreateCustomerModal={openCreateCustomerModal}
                     setOpenCreateCustomerModal={setOpenCreateCustomerModal}
+                    refresh={refresh}
+                    setRefresh={setRefresh}
+                />
+            )}
+            {openCustomerUpdateModal && !openCustomerModal && (
+                <CustomerUpdateModal
+                    data={customerData}
+                    openCustomerUpdateModal={openCustomerUpdateModal}
+                    setOpenCustomerUpdateModal={setOpenCustomerUpdateModal}
                     refresh={refresh}
                     setRefresh={setRefresh}
                 />

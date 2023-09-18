@@ -232,7 +232,7 @@ function Login({ User, setUser }) {
                                 }
 
                             </form>
-                            <div className='login__container__forgot__link'>Forgot Password?</div>
+                            <div className='login__container__forgot__link' onClick={() => navigate("/forgot-password")}>Forgot Password?</div>
                             <div className='login__container__signup__link'>Don't have an account? <span onClick={() => navigate("/signup")}>SignUp</span></div>
                         </div>
                     }

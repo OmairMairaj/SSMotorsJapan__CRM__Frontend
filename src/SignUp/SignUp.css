@@ -5,9 +5,17 @@
     justify-content: center;
     align-items: center;
     /* background-color: #e8f3ff; */
+    position: relative;
 }
 
-
+.signup__back{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    color: #153e4d;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 .signup__container {
     width: 70%;
     height: 90%;

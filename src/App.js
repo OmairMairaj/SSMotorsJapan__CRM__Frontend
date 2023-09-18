@@ -16,9 +16,31 @@ import AdminCustomers from './AdminCustomers/AdminCustomers';
 import AdminUsers from './AdminUsers/AdminUsers';
 import AdminInvoices from './AdminInvoices/AdminInvoices';
 import AdminSettings from './AdminSettings/AdminSettings';
+import ForgotPassword from './ForgotPassword/ForgotPassword';
+import ResetPassword from './ResetPassword/ResetPassword';
 
 function App() {
   // const navigate = useNavigate();
+
+
+  const floatingElements = document.querySelectorAll('.bg li');
+
+  function animateElements() {
+    floatingElements.forEach((element, index) => {
+      // Generate a random X-axis position between 0% and 100%
+      const randomX = Math.random() * 100;
+
+      // Generate a random delay for a staggered effect
+      const delay = index * 2; // Adjust the delay as needed for staggered animation
+
+      // Apply the random X-axis position and animation properties
+      element.style.left = `${randomX}%`;
+      element.style.animation = `animate 15s linear ${delay}s infinite`;
+    });
+  }
+
+  animateElements(); // Call the function to start the animation
+
   const [User, setUser] = React.useState({
     userId: '',
     fullname: '',
@@ -54,33 +76,33 @@ function App() {
   }
 
   function ClientNavigation() {
-    if (User.role === 'client') {
+    if (User && User.role === 'client') {
       if (window.location.pathname === '/profile') return <Profile />
     }
-    else{
+    else {
       return <Error />;
     }
   }
 
   function SaleNavigation() {
-    if (User.role === 'sale') {
+    if (User && User.role === 'sale') {
       if (window.location.pathname === '/customer') return <Customer />
       else if (window.location.pathname === '/add-customer') return <AddCustomer />
       else if (window.location.pathname === '/create-invoice') return <CreateInvoice />
     }
-    else{
+    else {
       return <Error />;
     }
   }
 
   function AdminNavigation() {
-    if (User.role === 'admin') {
+    if (User && User.role === 'admin') {
       if (window.location.pathname === '/admin/customers') return <AdminCustomers />
       else if (window.location.pathname === '/admin/users') return <AdminUsers />
       else if (window.location.pathname === '/admin/invoices') return <AdminInvoices />
       else if (window.location.pathname === '/admin/settings') return <AdminSettings />
     }
-    else{
+    else {
       return <Error />;
     }
   }
@@ -91,6 +113,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setUser={(item) => setUser(item)} User={User} />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<NavigateToDashboard />} />
           <Route path="/profile" element={<ClientNavigation />} />

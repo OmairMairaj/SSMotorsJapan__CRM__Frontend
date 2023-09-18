@@ -305,7 +305,7 @@ function AdminSettings() {
 
     const handleUpdateBankAccount = (data) => {
         setBankData(data);
-        setOpenBankModal(true)
+        setOpenBankModal(true);
         // }
     }
 

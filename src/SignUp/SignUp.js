@@ -6,6 +6,7 @@ import {
     FaEye,
     FaEyeSlash,
     FaCheckCircle,
+    FaArrowLeft,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import validator from 'validator';
@@ -213,6 +214,7 @@ function SignUp() {
                 <li></li>
                 {/* Add other <li> elements here */}
             </ul>
+            <div className="signup__back" onClick={() => navigate('/')}><FaArrowLeft /></div>
             <div className="signup__container">
                 <div className="signup__container__bg">
                     <div className="signup__container__img">

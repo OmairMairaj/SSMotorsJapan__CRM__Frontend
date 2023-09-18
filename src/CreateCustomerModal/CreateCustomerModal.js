@@ -211,7 +211,7 @@ function CreateCustomerModal({ openCreateCustomerModal, setOpenCreateCustomerMod
                         newErrors.push(res.data.message || 'Error while signing up');
                         setLoading(false);
                     } else {
-                        console.log(res.data.data);
+                        console.log(res.data.message);
                         setMessage(res.data.message);
                     }
                 })
@@ -254,17 +254,17 @@ function CreateCustomerModal({ openCreateCustomerModal, setOpenCreateCustomerMod
 
     if (!openCreateCustomerModal) return null;
     return (
-        <div className="create__customer__modal" onClick={() => setOpenCreateCustomerModal(false)}>
+        <div className="create__customer__modal" onClick={() => {setOpenCreateCustomerModal(false); setRefresh(!refresh);}}>
             {successfull ?
                 <div class="create__customer__modal__screen__success" onClick={(e) => e.stopPropagation()}>
                     <div className='create__customer__modal__screen__clip'></div>
                     <div class="create__customer__modal__screen__success__container">
-                        <div class="create__customer__modal__close__button" onClick={() => setOpenCreateCustomerModal(false)}><AiOutlineClose /></div>
+                        <div class="create__customer__modal__close__button" onClick={() => {setOpenCreateCustomerModal(false); setRefresh(!refresh);}}><AiOutlineClose /></div>
                         <div class="create__customer__modal__screen__content__success">
-                            <div className='successful__login'>
-                                <FaCheckCircle className="successful__signup__icon" />
-                                <i className='successful__signup__icon'></i>
-                                <div className='successful__login__text'>Customer Created Successfully</div>
+                            <div className='create__customer__modal__successful'>
+                                <FaCheckCircle className="create__customer__modal__successful__icon" />
+                                {/* <i className='successful__signup__icon'></i> */}
+                                <div className='create__customer__modal__successful__text'>Customer Created Successfully</div>
                             </div>
                         </div>
                     </div>
@@ -273,7 +273,7 @@ function CreateCustomerModal({ openCreateCustomerModal, setOpenCreateCustomerMod
                 <div class="create__customer__modal__screen" onClick={(e) => e.stopPropagation()}>
                     <div className='create__customer__modal__screen__clip'></div>
                     <div class="create__customer__modal__screen__container">
-                        <div class="create__customer__modal__close__button" onClick={() => setOpenCreateCustomerModal(false)}><AiOutlineClose /></div>
+                        <div class="create__customer__modal__close__button" onClick={() => {setOpenCreateCustomerModal(false); setRefresh(!refresh);}}><AiOutlineClose /></div>
                         <div class="create__customer__modal__screen__content">
                             <div className='create__customer__modal__screen__content__top'>
                                 <FaUserPlus style={{ color: '#153e4d' }} size={40} />

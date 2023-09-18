@@ -55,7 +55,13 @@ function AdminUsers() {
                 console.log(res.data.message)
             } else {
                 console.log(res.data.data);
-                setData(res.data.data);
+                let users = [];
+                res.data.data.filter((item) => {
+                    if(item.role !== 'client') {
+                        users.push(item);
+                    }
+                })
+                setData(users);
             }
 
         }) // Replace with your actual API URL
@@ -211,7 +217,7 @@ function AdminUsers() {
                                             <div className='admin__users__container__content__table__row__item' style={{ width: '20%', textAlign: 'center' }}>{item.contact === "" ? '--------' : item.contact}</div>
                                             <div className='admin__users__container__content__table__row__item' style={{ width: '13%', textAlign: 'center' }}>{item.role.toUpperCase()}</div>
                                             <div className='admin__users__container__content__table__row__item' style={{ width: '13%', textAlign: 'center' }}>{item.userStatus.toUpperCase()}</div>
-                                            <div className='admin__users__container__content__table__row__item' style={{ width: '10%', textAlign: 'center', color: '#56a8ff' }} onClick={() => handleClickModal(item)}><FaEdit size={20} /></div>
+                                            <div className='admin__users__container__content__table__row__item' style={{ width: '9.5%', textAlign: 'center', color: '#56a8ff' }} onClick={() => handleClickModal(item)}><FaEdit size={20} /></div>
                                         </div>
                                     )
                                 }

@@ -159,15 +159,15 @@
 
 .customer__container__content__invoices__table__rows{
     width: 100%;
-    /* overflow: auto; */
-    /* max-height: 53vh; */
-    /* overflow-y: scroll; */
-    /* overflow-x: hidden; */
-    /* scroll-behavior: smooth; */
+    overflow: auto;
+    max-height: 53vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .customer__container__content__invoices__table__rows::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     border-radius: 15px;
     overflow: hidden;
 }
