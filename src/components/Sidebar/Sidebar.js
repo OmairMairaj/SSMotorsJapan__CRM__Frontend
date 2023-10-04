@@ -1,7 +1,7 @@
 import React from 'react'
 import './Sidebar.css'
 import logo from '../../assets/images/logo.png'
-import { FaHome, FaUser, FaSignOutAlt, FaBars, FaFileInvoice, FaUsers, FaUsersCog, FaCog } from 'react-icons/fa';
+import { FaHome, FaUser, FaSignOutAlt, FaBars, FaFileInvoice, FaUsers, FaUsersCog, FaCog, FaUserPlus } from 'react-icons/fa';
 import { BsPersonAdd } from 'react-icons/bs';
 // import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -84,7 +84,7 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
                                     <div className='sidebar__menu__pages__item__name' style={{ display: !openSidebar ? 'none' : null }} >Create Invoice</div>
                                 </div>
                                 <div className='sidebar__menu__pages__item' style={!openSidebar ? { width: '40%', backgroundColor: 'transparent' } : {paddingLeft: '40%'}} onClick={() => navigate('/add-customer')}>
-                                    <div className='sidebar__menu__pages__item__icon' style={!openSidebar ? { width: '100%', marginRight: '0px' } : null}><BsPersonAdd size={'25px'} /></div>
+                                    <div className='sidebar__menu__pages__item__icon' style={!openSidebar ? { width: '100%', marginRight: '0px' } : null}><FaUserPlus size={'25px'} /></div>
                                     <div className='sidebar__menu__pages__item__name' style={{ display: !openSidebar ? 'none' : null }} >Add Customer</div>
                                 </div>
                                 <div className='sidebar__menu__pages__item' style={!openSidebar ? { width: '40%', backgroundColor: 'transparent' } : {paddingLeft: '40%'}} onClick={() => navigate('/customer')}>

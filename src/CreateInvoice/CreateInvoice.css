@@ -1,7 +1,7 @@
 .create__invoice {
     display: flex;
     overflow: hidden;
-    position: static;
+    /* position: static; */
     justify-content: flex-end;
 }
 
@@ -16,34 +16,34 @@
     position: relative;
 }
 
-.create__invoice__container__content{
+.create__invoice__container__content {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 99vh;
+    min-height: 99vh;
     padding: 0px 20px 0px 20px;
 }
 
-.create__invoice__container__content__heading{
+.create__invoice__container__content__heading {
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.create__invoice__container__content__edit__info{
+.create__invoice__container__content__edit__info {
     width: 100%;
 }
 
-.create__invoice__container__form{
+.create__invoice__container__form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.create__invoice__container__form__sections{
+.create__invoice__container__form__sections {
     display: flex;
     /* flex-direction: column; */
     width: 100%;
@@ -52,7 +52,7 @@
     /* flex-wrap: wrap; */
 }
 
-.create__invoice__container__form__dealer__info{
+.create__invoice__container__form__dealer__info {
     padding: 30px 40px 20px 40px;
     width: 42%;
     display: flex;
@@ -64,7 +64,7 @@
     position: relative;
 }
 
-.create__invoice__container__form__section__label{
+.create__invoice__container__form__section__label {
     position: absolute;
     top: -20px;
     left: 40px;
@@ -75,7 +75,7 @@
 }
 
 
-.create__invoice__container__form__payment__shipping__info{
+.create__invoice__container__form__payment__shipping__info {
     padding: 30px 40px 20px 40px;
     width: 42%;
     display: flex;
@@ -87,12 +87,12 @@
     position: relative;
 }
 
-.create__invoice__container__form__vehicle__details{
+.create__invoice__container__form__vehicle__details {
     padding: 30px 40px 20px 40px;
     width: 98%;
     display: flex;
     /* flex-wrap: wrap; */
-    /* flex-direction: column; */
+    flex-direction: column;
     /* align-items: center; */
     justify-content: space-between;
     border-radius: 10px;
@@ -100,7 +100,24 @@
     position: relative;
 }
 
-.create__invoice__container__form__column{
+.create__invoice__container__form__vehicle {
+    /* width: 100%; */
+    display: flex;
+    padding: 30px 0 10px 0;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: space-between;
+    position: relative;
+}
+.create__invoice__container__form__vehicle__heading{
+    position: absolute;
+    top: 0;
+    color: #153e4d;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.create__invoice__container__form__column {
     /* padding: 30px 40px 20px 40px; */
     width: 30%;
     display: flex;
@@ -109,11 +126,11 @@
     justify-content: flex-start;
     border-radius: 10px;
     /* border: 1px solid #b6b6b6; */
-    position: relative;
+    /* position: relative; */
 }
 
 
-.create__invoice__container__form__group{
+.create__invoice__container__form__group {
     width: 100%;
     height: 30px;
     margin: 10px 0;
@@ -123,7 +140,7 @@
     margin-right: 3%;
 }
 
-.create__invoice__container__form__group label{
+.create__invoice__container__form__group label {
     font-size: 0.9rem;
     font-weight: 600;
     color: #153e4d;
@@ -132,7 +149,7 @@
     width: 30%;
 }
 
-.create__invoice__container__form__group input{
+.create__invoice__container__form__group input {
     width: 67%;
     height: 100%;
     border: 1px solid #9c9c9cb4;
@@ -143,14 +160,16 @@
     margin: 0px;
     padding-left: 3%;
 }
-.create__invoice__container__form__group input:focus{
+
+.create__invoice__container__form__group input:focus {
     outline: 1px solid #153e4d9e;
 }
-.create__invoice__container__form__group input::placeholder{
+
+.create__invoice__container__form__group input::placeholder {
     font-size: 0.8rem;
 }
 
-.create__invoice__container__form__group textarea{
+.create__invoice__container__form__group textarea {
     width: 70%;
     height: 100px;
     border: 1px solid #9c9c9cb4;
@@ -162,7 +181,7 @@
     padding-left: 2%;
 }
 
-.create__invoice__container__form__group select{
+.create__invoice__container__form__group select {
     width: 70%;
     height: 100%;
     border: 1px solid #9c9c9cb4;
@@ -175,7 +194,7 @@
     cursor: pointer;
 }
 
-.create__invoice__container__form__group input[type="checkbox"]{
+.create__invoice__container__form__group input[type="checkbox"] {
     width: 20px;
     height: 20px;
     border: 1px solid #9c9c9cb4;
@@ -183,22 +202,22 @@
     border-radius: 5px;
     /* font-size: 0.5rem; */
     color: #153e4d;
-    margin: 5px 5px; 
+    margin: 5px 5px;
     /* padding-left: 2%; */
 }
 
 
-.create__invoice__container__form__group2{
+.create__invoice__container__form__group2 {
     width: 100%;
     height: 30px;
-    margin: 10px 0;
+    margin: 5px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-right: 3%;
 }
 
-.create__invoice__container__form__group2 label{
+.create__invoice__container__form__group2 label {
     font-size: 0.9rem;
     font-weight: 600;
     color: #153e4d;
@@ -207,7 +226,7 @@
     width: 40%;
 }
 
-.create__invoice__container__form__group2 input{
+.create__invoice__container__form__group2 input {
     width: 60%;
     height: 100%;
     border: 1px solid #9c9c9cb4;
@@ -218,19 +237,32 @@
     margin: 0px;
     padding-left: 3%;
 }
-.create__invoice__container__form__group2 input:focus{
+
+.create__invoice__container__form__group2 input:focus {
     outline: 1px solid #153e4d9e;
 }
-.create__invoice__container__form__group2 input::placeholder{
+
+.create__invoice__container__form__group2 input::placeholder {
     font-size: 0.8rem;
 }
 
+.create__invoice__container__form__group2 select {
+    width: 65%;
+    height: 100%;
+    border: 1px solid #9c9c9cb4;
+    outline: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #153e4d;
+    margin: 0px;
+    padding-left: 2%;
+    cursor: pointer;
+}
 
 
 
 
-
-.create__invoice__container__form__group button{
+.create__invoice__container__form__group button {
     width: 100%;
     height: 40px;
     /* margin-top: 20px; */
@@ -240,17 +272,18 @@
     background-color: #153e4d;
     cursor: pointer;
 }
-.create__invoice__container__form__group button:hover{
+
+.create__invoice__container__form__group button:hover {
     filter: brightness(1.1)
 }
 
-.create__invoice__container__content__change__password{
+.create__invoice__container__content__change__password {
     margin: 20px 0;
     padding: 20px 0;
     border-top: 1px solid #b6b6b6;
 }
 
-.create__invoice__container__form__group4{
+.create__invoice__container__form__group4 {
     width: 100%;
     height: 30px;
     margin-bottom: 20px;
@@ -260,7 +293,7 @@
     align-items: center;
 }
 
-.create__invoice__container__form__group4 label{
+.create__invoice__container__form__group4 label {
     font-size: 0.9rem;
     font-weight: 600;
     color: #153e4d;
@@ -269,7 +302,8 @@
     padding: 0px;
     width: 16.8%;
 }
-.create__invoice__container__form__group4 select{
+
+.create__invoice__container__form__group4 select {
     width: 15%;
     height: 100%;
     border: 1px solid #9c9c9cb4;
@@ -285,9 +319,34 @@
     margin: 0px;
     /* padding: 0px 10px; */
 }
-.create__invoice__container__form__group4 select:focus{
+
+.create__invoice__container__form__group4 select:focus {
     outline: 1px solid #153e4d9e;
 }
-.create__invoice__container__form__group4 select::placeholder{
+
+.create__invoice__container__form__group4 select::placeholder {
     font-size: 0.8rem;
+}
+
+.create__invoice__container__form__vehicle__add {
+    /* width: 100%; */
+    height: 30px;
+    margin: 10px 0;
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: center;
+    margin-right: 3%;
+}
+
+.create__invoice__container__form__vehicle__remove {
+    /* width: 100%; */
+    position: absolute;
+    height: 30px;
+    /* margin: 10px 0; */
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: center;
+    /* margin-right: 3%; */
+    top: 0;
+    right: 0;
 }

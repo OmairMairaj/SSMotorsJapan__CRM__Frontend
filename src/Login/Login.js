@@ -73,6 +73,7 @@ function Login({ User, setUser }) {
                         setResponse(res.data.message)
                         console.log(res);
                         setUser({
+                            _id: res.data.user._id,
                             email: res.data.user.email,
                             fullname: res.data.user.fullname,
                             role: res.data.user.role,
@@ -82,6 +83,7 @@ function Login({ User, setUser }) {
                         });
                         console.log(JSON.stringify(User));
                         sessionStorage.setItem('user', JSON.stringify({
+                            _id: res.data.user._id,
                             email: res.data.user.email,
                             fullname: res.data.user.fullname,
                             role: res.data.user.role,
